@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter+Tight:ital,wght@1,100..900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+i h1 {
+  font-family: "Inter Tight";
+  letter-spacing: 6px;
+  padding-left: 10%;
+}
+
+.foodify-logo {
+  transform: rotate(45deg);
+  margin-top: 5px;
+}
