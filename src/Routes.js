@@ -4,6 +4,7 @@ import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom';
 
 import Home from './content/home/Home'
 import Header from './content/header-footer/Header';
+import Recipe from './content/recipe/Recipe';
 
 const Routes = () => {
     return (
@@ -11,6 +12,7 @@ const Routes = () => {
             <Header />
             <Switch>
                 <Route path='/' Component={Home}/>
+                <Route path='/recipes' Component={Recipe} />
             </Switch>
         </>
     );
