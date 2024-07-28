@@ -30,7 +30,6 @@ const IngredientsList = () => {
 
     return (
         <>
-        <div id='outlined-basic'><TextField onChange={handleInputChange} color='success' label="Your Custom Ingredients" variant="outlined" size='small'/></div>
         <div className='ingredients-container'>
             <div className='pantry-essentials' id='flex-item'>
                 <Accordion defaultExpanded>
@@ -42,6 +41,7 @@ const IngredientsList = () => {
                             color="info"
                             value={alignment}
                             onChange={handleChange}
+                            id='group-buttons'
                         >
                             <ToggleButton value={"flour"}>Flour</ToggleButton>
                             <ToggleButton value={"milk"}>Milk</ToggleButton>
@@ -68,6 +68,7 @@ const IngredientsList = () => {
                             color="info"
                             value={alignment}
                             onChange={handleChange}
+                            id='group-buttons'
                         >
                             <ToggleButton value={"broccoli"}>Broccoli</ToggleButton>
                             <ToggleButton value={"spinach"}>Spinach</ToggleButton>
@@ -95,6 +96,7 @@ const IngredientsList = () => {
                             color="info"
                             value={alignment}
                             onChange={handleChange}
+                            id='group-buttons'
                         >
                             <ToggleButton value={"milk"}>Milk</ToggleButton>
                             <ToggleButton value={"eggs"}>Eggs</ToggleButton>
@@ -109,7 +111,7 @@ const IngredientsList = () => {
                     </AccordionDetails>
                 </Accordion>
             </div>
-            <div className='dairy-egg' id='flex-item'>
+            <div className='fruits' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
                         Fruits
@@ -119,6 +121,7 @@ const IngredientsList = () => {
                             color="info"
                             value={alignment}
                             onChange={handleChange}
+                            id='group-buttons'
                         >
                             <ToggleButton value={"apple"}>Apple</ToggleButton>
                             <ToggleButton value={"banana"}>Banana</ToggleButton>
@@ -136,6 +139,7 @@ const IngredientsList = () => {
                 </Accordion>
             </div>
         </div>
+        <div id='outlined-basic'><TextField onChange={handleInputChange} color='success' style={{ width: 300 }} label="Other Ingredients or Options" variant="outlined" size='small'/></div>
         <div className='find-recipes-btn'>
             <Button onClick={handleClick} variant='contained' color='info'>Find Recipes</Button>
         </div>

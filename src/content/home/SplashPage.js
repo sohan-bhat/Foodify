@@ -3,9 +3,12 @@ import React from 'react';
 
 const SplashPage = () => {
     return (
-        <div className='add-ingredients-btn'>
-            <Button href='/recipes' variant='contained'>Add Some ingredients →</Button>
-        </div>
+        <>
+            <h1 className='header-slogan'>Turn Ingredients into Inspiration: Discover Recipes with What You Have!</h1>
+            <div className='add-ingredients-btn'>
+                <Button href='/recipes' variant='contained'>Start Adding ingredients →</Button>
+            </div>
+        </>
     );
 };
 

@@ -19,10 +19,30 @@ i h1 {
 }
 
 .header-slogan {
-  font-family: "Inter Tight";
-  font-size: 20px;
+  font-family: "Poppins";
+  font-size: 1.5pc;
   letter-spacing: 5px;
   padding-left: 2%;
+  padding-top: 2%;
+  display: flex;
+  justify-content: center;
+  color: tomato;
+}
+
+@media screen and (max-width: 812px) {
+  i h1 {
+    font-size: 1.5pc;
+  }
+
+  .foodify-logo {
+    width: 40px;
+    height: 40px;
+  }
+
+  .header-slogan {
+    font-size: 15px;
+    letter-spacing: 2px;
+  }
 }
 
 .foodify-logo {
@@ -53,6 +73,10 @@ i h1 {
   margin: 0 2pc 2pc 2pc;
 }
 
+#group-buttons {
+  display: contents;
+}
+
 .pantry-essentials {
   padding-top: 1pc;
 }
@@ -65,7 +89,7 @@ i h1 {
 #outlined-basic {
   display: flex;
   justify-content: center;
-  padding-top: 2pc;
+  padding-bottom: 2pc;
 }
 
 /* Response Cover */
