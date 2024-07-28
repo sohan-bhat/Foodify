@@ -108,6 +108,12 @@ i h1 {
   font-size: 110%;
 }
 
+@media screen and (max-width: 550px) {
+  .response-cover {
+    margin: 2pc;
+  }
+}
+
 @keyframes fade-up-response {
   0% {
     opacity: 0;

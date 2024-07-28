@@ -1,6 +1,6 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { ArrowDropDown } from '@mui/icons-material';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { getGroqChatCompletion } from '../../tools/aiTools';
 import Markdown from 'react-markdown'
 
@@ -10,6 +10,7 @@ const IngredientsList = () => {
     const [clickState, setClickState] = React.useState([])
     const [inputState, setInputState] = React.useState([])
     const [responseState, setResponseState] = React.useState()
+    const bottomOfPanelRef = React.useRef(null)
 
 
     const handleChange = (event, newAlignment) => {
@@ -27,6 +28,11 @@ const IngredientsList = () => {
         })
     }
 
+    useEffect(() => {
+        if (bottomOfPanelRef.current) {
+            bottomOfPanelRef.current.scrollIntoView({behavior: "smooth"})
+        }
+    }, [responseState])
 
     return (
         <>
@@ -86,31 +92,6 @@ const IngredientsList = () => {
                     </AccordionDetails>
                 </Accordion>
             </div>
-            <div className='dairy-egg' id='flex-item'>
-                <Accordion defaultExpanded>
-                    <AccordionSummary expandIcon={<ArrowDropDown />}>
-                        Dairy & Eggs
-                    </AccordionSummary>
-                    <AccordionDetails>
-                        <ToggleButtonGroup 
-                            color="info"
-                            value={alignment}
-                            onChange={handleChange}
-                            id='group-buttons'
-                        >
-                            <ToggleButton value={"milk"}>Milk</ToggleButton>
-                            <ToggleButton value={"eggs"}>Eggs</ToggleButton>
-                            <ToggleButton value={"butter"}>Butter</ToggleButton>
-                            <ToggleButton value={"cheese"}>Cheese</ToggleButton>
-                            <ToggleButton value={"curd"}>Curd</ToggleButton>
-                            <ToggleButton value={"butter"}>Butter</ToggleButton>
-                            <ToggleButton value={"white rice"}>White Rice</ToggleButton>
-                            <ToggleButton value={"garlic"}>Garlic</ToggleButton>
-                            <ToggleButton value={"sugar"}>Sugar</ToggleButton>
-                        </ToggleButtonGroup>
-                    </AccordionDetails>
-                </Accordion>
-            </div>
             <div className='fruits' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
@@ -138,17 +119,43 @@ const IngredientsList = () => {
                     </AccordionDetails>
                 </Accordion>
             </div>
+            <div className='dairy-egg' id='flex-item'>
+                <Accordion defaultExpanded>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                        Dairy & Eggs
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            <ToggleButton value={"milk"}>Milk</ToggleButton>
+                            <ToggleButton value={"eggs"}>Eggs</ToggleButton>
+                            <ToggleButton value={"butter"}>Butter</ToggleButton>
+                            <ToggleButton value={"cheese"}>Cheese</ToggleButton>
+                            <ToggleButton value={"plain yogurt"}>Plain Yogurt</ToggleButton>
+                            <ToggleButton value={"ghee"}>Ghee</ToggleButton>
+                            <ToggleButton value={"cream"}>Cream</ToggleButton> 
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
         </div>
-        <div id='outlined-basic'><TextField onChange={handleInputChange} color='success' style={{ width: 300 }} label="Other Ingredients or Options" variant="outlined" size='small'/></div>
+        <div id='outlined-basic'><TextField onChange={handleInputChange} color='success' style={{ width: "350px" }} label="Other Ingredients or Dietary Lifestyles" variant="outlined" size='small'/></div>
         <div className='find-recipes-btn'>
             <Button onClick={handleClick} variant='contained' color='info'>Find Recipes</Button>
         </div>
         { responseState ?
-            <div className="response-cover">
-                <p>
-                    <Markdown>{responseState}</Markdown>
-                </p>
-            </div>
+            <>
+                <div className="response-cover">
+                    <p>
+                        <Markdown>{responseState}</Markdown>
+                    </p>
+                </div>
+                <div ref={bottomOfPanelRef}></div>
+            </>
             :
             null
         }
