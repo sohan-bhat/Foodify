@@ -96,7 +96,7 @@ i h1 {
 #outlined-basic {
   display: flex;
   justify-content: center;
-  padding-bottom: 2pc;
+  padding-bottom: 1.5pc;
 }
 
 .ingredients-slogan {
@@ -113,19 +113,27 @@ i h1 {
 .clear-all-btn {
   display: flex;
   justify-content: flex-start;
-  margin: 0 0 0 2pc;
+  margin: 0pc 0 0 2pc;
+  position: absolute;
 }
 
 @media screen and (max-width: 901px) {
   .clear-all-btn {
     display: flex;
     justify-content: center;
-    margin: 0 0 2pc;
+    position: relative;
+    margin: 0 0 1pc;
   }
 }
 
 .ingredients-container img {
   margin-right: 0.75pc;
+}
+
+.meal-type {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2pc;
 }
 
 /* Response Cover */

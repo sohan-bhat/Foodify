@@ -1,4 +1,4 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Button, MenuItem, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { ArrowDropDown, Delete } from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import { getGroqChatCompletion } from '../../tools/aiTools';
@@ -9,6 +9,7 @@ const IngredientsList = () => {
     const [alignment, setAlignment] = React.useState();
     const [clickState, setClickState] = React.useState([])
     const [inputState, setInputState] = React.useState([])
+    const [mealType, setMealType] = React.useState([])
     const [responseState, setResponseState] = React.useState()
     const bottomOfPanelRef = React.useRef(null)
 
@@ -23,9 +24,13 @@ const IngredientsList = () => {
     }
 
     const handleClick = () => {
-        getGroqChatCompletion(clickState.concat(inputState)).then((res) => {
+        getGroqChatCompletion(clickState.concat(inputState, mealType)).then((res) => {
             setResponseState(res.choices[0].message.content)
         })
+    }
+
+    const handleMealType = (event) => {
+        setMealType(event.target.value)
     }
 
     const handleClear = (event) => {
@@ -40,7 +45,7 @@ const IngredientsList = () => {
 
     return (
         <>
-        <h2 className='ingredients-slogan'>Just Click on Your Ingredients and Start Finding Recipes!</h2>
+        <h2 className='ingredients-slogan'>Select Ingredients you have, Find Recipes, and Start Cooking Now!</h2>
         <div className='ingredients-container'>
             <div className='pantry-essentials' id='flex-item'>
                 <Accordion defaultExpanded>
@@ -209,6 +214,22 @@ const IngredientsList = () => {
             <Button startIcon={<Delete />} onClick={handleClear} variant='contained' color='error'>Clear</Button>
         </div>
         <div id='outlined-basic'><TextField onChange={handleInputChange} color='success' style={{ width: "350px" }} label="Other Ingredients or Dietary Lifestyles" variant="outlined" size='small'/></div>
+        <div className='meal-type'>
+            <TextField
+                label="Select Meal Type"
+                select
+                defaultValue={""}
+                variant='outlined'
+                onChange={handleMealType}
+                size='small'
+                sx={{width: "250px"}}
+            >
+                <MenuItem value="Breakfast">Breakfast</MenuItem>
+                <MenuItem value="Lunch">Lunch</MenuItem>
+                <MenuItem value="Dinner">Dinner</MenuItem>
+                <MenuItem value="Snack">Snack</MenuItem>
+            </TextField>
+        </div>
         <div className='find-recipes-btn'>
             <Button onClick={handleClick} variant='contained' color='info'>Find Recipes</Button>
         </div>
