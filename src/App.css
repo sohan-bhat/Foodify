@@ -8,7 +8,8 @@
 }
 
 body {
-  background-color: #FFFFF1;
+  background-color: #FDFBD4;
+  /* background-image: url("https://media.istockphoto.com/id/515373062/vector/food-seamless-background.jpg?s=612x612&w=0&k=20&c=hexa_lBms2zsFxEHASUeYhNu17i8JfV3TGOoDark-tk="); */
 }
 
 /* HEADER */
@@ -20,16 +21,21 @@ i h1 {
 
 .header-slogan {
   font-family: "Poppins";
-  font-size: 1.5pc;
+  font-size: 2pc;
   letter-spacing: 5px;
   padding-left: 2%;
   padding-top: 2%;
   display: flex;
+  text-align: center;
   justify-content: center;
   color: tomato;
 }
 
 @media screen and (max-width: 812px) {
+  .ingredients-slogan {
+    font-size: 1.5pc;
+  }
+
   i h1 {
     font-size: 1.5pc;
   }
@@ -40,7 +46,7 @@ i h1 {
   }
 
   .header-slogan {
-    font-size: 15px;
+    font-size: 1.5pc;
     letter-spacing: 2px;
   }
 }
@@ -84,12 +90,42 @@ i h1 {
 .find-recipes-btn {
   display: flex;
   justify-content: center;
+  padding-bottom: 2pc;
 }
 
 #outlined-basic {
   display: flex;
   justify-content: center;
   padding-bottom: 2pc;
+}
+
+.ingredients-slogan {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-family: "Poppins";
+  font-size: 2pc;
+  letter-spacing: 5px;
+  color: tomato;
+  padding: 2% 0 2% 0;
+}
+
+.clear-all-btn {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0 0 0 2pc;
+}
+
+@media screen and (max-width: 901px) {
+  .clear-all-btn {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 2pc;
+  }
+}
+
+.ingredients-container img {
+  margin-right: 0.75pc;
 }
 
 /* Response Cover */
@@ -101,6 +137,7 @@ i h1 {
   margin: 1% 20%;
   animation: fade-up-response 1.5s;
   margin-top: 2pc;
+  margin-bottom: 3pc;
 }
 
 .response-cover p {
