@@ -1,16 +1,16 @@
-import { Accordion, AccordionDetails, AccordionSummary, Button, MenuItem, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Button, CircularProgress, Dialog, DialogContent, DialogTitle, MenuItem, TextField, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { ArrowDropDown, Delete } from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import { getGroqChatCompletion } from '../../tools/aiTools';
 import Markdown from 'react-markdown'
 
 const IngredientsList = () => {
-
     const [alignment, setAlignment] = React.useState();
     const [clickState, setClickState] = React.useState([])
     const [inputState, setInputState] = React.useState([])
     const [mealType, setMealType] = React.useState([])
     const [responseState, setResponseState] = React.useState()
+    const [loading, setLoading] = React.useState(false)
     const bottomOfPanelRef = React.useRef(null)
 
 
@@ -24,8 +24,14 @@ const IngredientsList = () => {
     }
 
     const handleClick = () => {
+        setResponseState(false)
+        if (!loading) {
+            setLoading(true)
+        }
+        
         getGroqChatCompletion(clickState.concat(inputState, mealType)).then((res) => {
             setResponseState(res.choices[0].message.content)
+            setLoading(false)
         })
     }
 
@@ -231,8 +237,23 @@ const IngredientsList = () => {
             </TextField>
         </div>
         <div className='find-recipes-btn'>
-            <Button onClick={handleClick} variant='contained' color='info'>Find Recipes</Button>
+            <Button onClick={handleClick} variant='contained' disabled={loading} color='info'>Find Recipes</Button>
         </div>
+
+        <div className='loading-alert'>
+            <Dialog
+                open={loading}
+                fullWidth
+            >
+                <DialogTitle>
+                    Loading...
+                </DialogTitle>
+                <DialogContent>
+                    <CircularProgress />
+                </DialogContent>
+            </Dialog>
+        </div>
+
         { responseState ?
             <>
                 <div className="response-cover">
@@ -242,8 +263,7 @@ const IngredientsList = () => {
                 </div>
                 <div ref={bottomOfPanelRef}></div>
             </>
-            :
-            null
+        : null
         }
         </>
     );

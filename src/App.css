@@ -170,3 +170,9 @@ i h1 {
     transform: translateY(0px) scale(1);
   }
 }
+
+/* Loading Popup */
+.loading-alert {
+  display: flex;
+  justify-content: center;
+}
