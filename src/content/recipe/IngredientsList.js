@@ -45,7 +45,7 @@ const IngredientsList = () => {
             <div className='pantry-essentials' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
-                        <img src={require('../../icons/pantry.png')} width={30} height={30}/> Pantry Essentials
+                        <img src={require('../../icons/pantry.png')} width={30} height={30} alt='icon'/> Pantry Essentials
                     </AccordionSummary>
                     <AccordionDetails>
                         <ToggleButtonGroup 
@@ -72,7 +72,7 @@ const IngredientsList = () => {
             <div className='vegetables-greens' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
-                        <img src={require('../../icons/vegetables.png')} width={30} height={30}/> Vegetables & Greens
+                        <img src={require('../../icons/vegetables.png')} width={30} height={30} alt='icon'/> Vegetables & Greens
                     </AccordionSummary>
                     <AccordionDetails>
                         <ToggleButtonGroup 
@@ -109,7 +109,7 @@ const IngredientsList = () => {
             <div className='fruits' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
-                       <img src={require('../../icons/fruits.png')} width={30} height={30}/> Fruits
+                       <img src={require('../../icons/fruits.png')} width={30} height={30} alt='icon'/> Fruits
                     </AccordionSummary>
                     <AccordionDetails>
                         <ToggleButtonGroup 
@@ -149,7 +149,7 @@ const IngredientsList = () => {
             <div className='dairy-egg' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
-                        <img src={require('../../icons/dairy-eggs.png')} width={30} height={30}/> Dairy & Eggs
+                        <img src={require('../../icons/dairy-eggs.png')} width={30} height={30} alt='icon'/> Dairy & Eggs
                     </AccordionSummary>
                     <AccordionDetails>
                         <ToggleButtonGroup 
@@ -177,7 +177,7 @@ const IngredientsList = () => {
             <div className='grains-carbs' id='flex-item'>
                 <Accordion defaultExpanded>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
-                        <img src={require('../../icons/grains-carbs.png')} width={30} height={30}/> Grains & Carbs
+                        <img src={require('../../icons/grains-carbs.png')} width={30} height={30} alt='icon'/> Grains & Carbs
                     </AccordionSummary>
                     <AccordionDetails>
                         <ToggleButtonGroup 
