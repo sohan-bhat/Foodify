@@ -13,7 +13,22 @@ const IngredientsList = () => {
     const [loading, setLoading] = React.useState(false)
     const bottomOfPanelRef = React.useRef(null)
 
-
+    // LIST OF INGREDIENTS
+    const pantryEssentials = ["all-purpose flour", "baking powder", "baking soda", "butter", "cocoa powder", "cornstarch", "eggs", "Flour", "heavy cream", "honey", "milk", "brown sugar", "granulated sugar", "powdered sugar", "vanilla extract", "yeast"]
+    const vegetablesAndGreens = ["artichoke", "asparagus", "bell pepper", "broccoli", "brussels sprouts", "cabbage", "carrot", "cauliflower", "celery", "cucumber", "garlic", "green beans", "jalapeno", "kale", "lettuce", "mushrooms", "onion", "potato", "shallot", "spinach", "tomato"]
+    const fruits = ["apple", "apricot", "banana", "blackberry", "blueberry", "cantaloupe", "cherry", "coconut", "cranberry", "durian", "grapes", "grapefruit", "guava", "honeydew", "kiwi", "lemon", "lime", "mango", "orange", "papaya", "peach", "plum", "raspberry", "watermelon"]
+    const nutsAndSeeds = ["almonds", "brazil nuts", "cashews", "chestnuts", "chia seeds", "coconut", "flaxseeds", "hazelnuts", "hemp seeds", "macadamia nuts", "mustard seeds", "peanuts", "pecans", "pine nuts", "pistachios", "poppy seeds", "pumpkin seeds", "quinoa", "sesame seeds", "sunflower seeds", "walnuts"]
+    const meats = ["beef", "bison", "buffalo", "chicken", "duck", "emu", "goose", "lamb", "mutton", "pheasant", "pork", "turkey", "veal", "venison"]
+    const fishAndSeafood = ["anchovies", "barracuda", "bass", "catfish", "caviar", "cod", "crab", "crawfish", "cuttlefish", "eel", "lobster", "octopus", "oyster", "prawns", "scallops", "shark", "shrimp", "snails", "squid", "swordfish", "trout", "whitefish", "yellowtail"]
+    const herbsAndSpices = ["basil", "cardamom", "cinnamon", "cumin", "dill", "garlic powder", "ginger", "mint", "nutmeg", "oregano", "onion powder", "paprika", "parsley", "red pepper", "rosemary", "sage", "turmeric", "thyme"]
+    const dairyAndEggs = ["butter", "butter milk", "cheese", "cream", "sour cream", "whipped cream", "ice cream", "eggs", "ghee", "milk", "plain yogurt", "whey"]
+    const grainsAndCarbs = ["barley", "corn", "black beans", "kidney beans", "lentils", "millet", "oats", "pasta", "quinoa", "white rice", "brown rice", "corn tortilla", "flour tortilla", "mesa tortilla", "wheat"]
+    const condimentsAndSauces = ["Barbecue Sauce", "Chutney", "Fish Sauce", "Hot Sauce", "Hummus", "Italian Dressing", "Ketchup", "Mayonnaise", "Mustard", "Olive Oil", "Pesto", "Ranch", "Sesame Oil", "Soy Sauce", "Tahini", "Teriyaki Sauce", "Vinegar", "Worcestershire Sauce"]
+    
+    // MEAL TYPE
+    const mealTypeList = ["Breakfast", "Lunch", "Dinner", "Snack", "Drink"]
+    
+    // HANDLE EVENTS
     const handleChange = (event, newAlignment) => {
       setAlignment(newAlignment);
       setClickState(newAlignment)
@@ -51,7 +66,7 @@ const IngredientsList = () => {
 
     return (
         <>
-        <h2 className='ingredients-slogan'>Select Ingredients you have, Find Recipes, and Start Cooking Now!</h2>
+        <h2 className='ingredients-slogan'>Select the Ingredients you already have, Find Recipes, and Start Cooking Now!</h2>
         <div className='ingredients-container'>
             <div className='pantry-essentials' id='flex-item'>
                 <Accordion defaultExpanded>
@@ -65,23 +80,17 @@ const IngredientsList = () => {
                             onChange={handleChange}
                             id='group-buttons'
                         >
-                            <ToggleButton value={"flour"}>Flour</ToggleButton>
-                            <ToggleButton value={"milk"}>Milk</ToggleButton>
-                            <ToggleButton value={"eggs"}>Eggs</ToggleButton>
-                            <ToggleButton value={"butter"}>Butter</ToggleButton>
-                            <ToggleButton value={"white rice"}>White Rice</ToggleButton>
-                            <ToggleButton value={"garlic"}>Garlic</ToggleButton>
-                            <ToggleButton value={"sugar"}>Sugar</ToggleButton>
-                            <ToggleButton value={"bread"}>Bread</ToggleButton>
-                            <ToggleButton value={"onion"}>Onion</ToggleButton>
-                            <ToggleButton value={"potato"}>Potato</ToggleButton>
-                            <ToggleButton value={"carrot"}>Carrot</ToggleButton>
+                            {
+                                pantryEssentials.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
             </div>
             <div className='vegetables-greens' id='flex-item'>
-                <Accordion defaultExpanded>
+                <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
                         <img src={require('../../icons/vegetables.png')} width={30} height={30} alt='icon'/> Vegetables & Greens
                     </AccordionSummary>
@@ -92,33 +101,17 @@ const IngredientsList = () => {
                             onChange={handleChange}
                             id='group-buttons'
                         >
-                            <ToggleButton value={"artichoke"}>artichoke</ToggleButton>
-                            <ToggleButton value={"asparagus"}>asparagus</ToggleButton>
-                            <ToggleButton value={"bell pepper"}>Bell Pepper</ToggleButton>
-                            <ToggleButton value={"broccoli"}>Broccoli</ToggleButton>
-                            <ToggleButton value={"brussels sprouts"}>brussels sprouts</ToggleButton>
-                            <ToggleButton value={"cabbage"}>Cabbage</ToggleButton>
-                            <ToggleButton value={"carrot"}>Carrot</ToggleButton>
-                            <ToggleButton value={"cauliflower"}>cauliflower</ToggleButton>
-                            <ToggleButton value={"celery"}>Celery</ToggleButton>
-                            <ToggleButton value={"cucumber"}>Cucumber</ToggleButton>
-                            <ToggleButton value={"garlic"}>garlic</ToggleButton>
-                            <ToggleButton value={"green beans"}>green beans</ToggleButton>
-                            <ToggleButton value={"jalapeno"}>Jalapeno</ToggleButton>
-                            <ToggleButton value={"kale"}>kale</ToggleButton>
-                            <ToggleButton value={"lettuce"}>lettuce</ToggleButton>
-                            <ToggleButton value={"mushrooms"}>mushrooms</ToggleButton>
-                            <ToggleButton value={"onion"}>Onion</ToggleButton>
-                            <ToggleButton value={"potato"}>Potato</ToggleButton>
-                            <ToggleButton value={"shallot"}>Shallot</ToggleButton>
-                            <ToggleButton value={"spinach"}>Spinach</ToggleButton>
-                            <ToggleButton value={"tomato"}>tomato</ToggleButton>
+                            {
+                                vegetablesAndGreens.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
             </div>
             <div className='fruits' id='flex-item'>
-                <Accordion defaultExpanded>
+                <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
                        <img src={require('../../icons/fruits.png')} width={30} height={30} alt='icon'/> Fruits
                     </AccordionSummary>
@@ -129,36 +122,101 @@ const IngredientsList = () => {
                             onChange={handleChange}
                             id='group-buttons'
                         >
-                            <ToggleButton value={"apple"}>Apple</ToggleButton>
-                            <ToggleButton value={"apricot"}>apricot</ToggleButton>
-                            <ToggleButton value={"banana"}>Banana</ToggleButton>
-                            <ToggleButton value={"blackberry"}>Blackberry</ToggleButton>
-                            <ToggleButton value={"blueberry"}>Blueberry</ToggleButton>
-                            <ToggleButton value={"cantaloupe"}>cantaloupe</ToggleButton>
-                            <ToggleButton value={"cherry"}>cherry</ToggleButton>
-                            <ToggleButton value={"coconut"}>coconut</ToggleButton>
-                            <ToggleButton value={"cranberry"}>cranberry</ToggleButton>
-                            <ToggleButton value={"durian"}>durian</ToggleButton>
-                            <ToggleButton value={"grapes"}>Grapes</ToggleButton>
-                            <ToggleButton value={"grapefruit"}>Grapefruit</ToggleButton>
-                            <ToggleButton value={"guava"}>guava</ToggleButton>
-                            <ToggleButton value={"honeydew"}>honeydew</ToggleButton>
-                            <ToggleButton value={"kiwi"}>Kiwi</ToggleButton>
-                            <ToggleButton value={"lemon"}>lemon</ToggleButton>
-                            <ToggleButton value={"lime"}>lime</ToggleButton>
-                            <ToggleButton value={"mango"}>Mango</ToggleButton>
-                            <ToggleButton value={"orange"}>Orange</ToggleButton>
-                            <ToggleButton value={"papaya"}>papaya</ToggleButton>
-                            <ToggleButton value={"peach"}>peach</ToggleButton>
-                            <ToggleButton value={"plum"}>plum</ToggleButton>
-                            <ToggleButton value={"raspberry"}>Raspberry</ToggleButton>
-                            <ToggleButton value={"watermelon"}>watermelon</ToggleButton>
+                            {
+                                fruits.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+            <div className='nuts & seeds' id='flex-item'>
+                <Accordion>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                       <img src={require('../../icons/nuts.png')} width={30} height={30} alt='icon'/> Nuts & Seeds
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            {
+                                nutsAndSeeds.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+            <div className='meats' id='flex-item'>
+                <Accordion>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                        <img src={require('../../icons/meats.png')} width={30} height={30} alt='icon'/> Meats
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            {
+                                meats.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+            <div className='fish-seafood' id='flex-item'>
+                <Accordion>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                        <img src={require('../../icons/seafood.png')} width={30} height={30} alt='icon'/> Fish & Seafood
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            {
+                                fishAndSeafood.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+            <div className='herbs-spices' id='flex-item'>
+                <Accordion>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                        <img src={require('../../icons/herbs.png')} width={30} height={30} alt='icon'/> Herbs & Spices
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            {
+                                herbsAndSpices.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
             </div>
             <div className='dairy-egg' id='flex-item'>
-                <Accordion defaultExpanded>
+                <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
                         <img src={require('../../icons/dairy-eggs.png')} width={30} height={30} alt='icon'/> Dairy & Eggs
                     </AccordionSummary>
@@ -169,24 +227,17 @@ const IngredientsList = () => {
                             onChange={handleChange}
                             id='group-buttons'
                         >
-                            <ToggleButton value={"butter"}>Butter</ToggleButton>
-                            <ToggleButton value={"butter milk"}>Butter milk</ToggleButton>
-                            <ToggleButton value={"cheese"}>Cheese</ToggleButton>
-                            <ToggleButton value={"cream"}>Cream</ToggleButton> 
-                            <ToggleButton value={"sour cream"}>sour cream</ToggleButton> 
-                            <ToggleButton value={"whipped cream"}>whipped cream</ToggleButton> 
-                            <ToggleButton value={"ice cream"}>ice cream</ToggleButton> 
-                            <ToggleButton value={"eggs"}>Eggs</ToggleButton>
-                            <ToggleButton value={"ghee"}>Ghee</ToggleButton>
-                            <ToggleButton value={"milk"}>Milk</ToggleButton>
-                            <ToggleButton value={"plain yogurt"}>Plain Yogurt</ToggleButton>
-                            <ToggleButton value={"whey"}>whey</ToggleButton>
+                            {
+                                dairyAndEggs.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
             </div>
             <div className='grains-carbs' id='flex-item'>
-                <Accordion defaultExpanded>
+                <Accordion>
                     <AccordionSummary expandIcon={<ArrowDropDown />}>
                         <img src={require('../../icons/grains-carbs.png')} width={30} height={30} alt='icon'/> Grains & Carbs
                     </AccordionSummary>
@@ -197,24 +248,37 @@ const IngredientsList = () => {
                             onChange={handleChange}
                             id='group-buttons'
                         >
-                            <ToggleButton value={"barley"}>barley</ToggleButton>
-                            <ToggleButton value={"corn"}>corn</ToggleButton>
-                            <ToggleButton value={"kidney beans"}>kidney beans</ToggleButton>
-                            <ToggleButton value={"millet"}>millet</ToggleButton>
-                            <ToggleButton value={"oats"}>oats</ToggleButton> 
-                            <ToggleButton value={"pasta"}>pasta</ToggleButton> 
-                            <ToggleButton value={"quinoa"}>quinoa</ToggleButton> 
-                            <ToggleButton value={"white rice"}>white rice</ToggleButton> 
-                            <ToggleButton value={"brown rice"}>brown rice</ToggleButton> 
-                            <ToggleButton value={"Corn Tortilla"}>Corn Tortilla</ToggleButton> 
-                            <ToggleButton value={"Flour Tortilla"}>Flour Tortilla</ToggleButton> 
-                            <ToggleButton value={"masa Tortilla"}>masa Tortilla</ToggleButton> 
-                            <ToggleButton value={"wheat"}>wheat</ToggleButton>
-                            <ToggleButton value={"whey"}>whey</ToggleButton>
+                            {
+                                grainsAndCarbs.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
                         </ToggleButtonGroup>
                     </AccordionDetails>
                 </Accordion>
             </div>
+            <div className='condiments-sauces' id='flex-item'>
+                <Accordion>
+                    <AccordionSummary expandIcon={<ArrowDropDown />}>
+                        <img src={require('../../icons/sauces.png')} width={30} height={30} alt='icon'/> Condiments & Sauces
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <ToggleButtonGroup 
+                            color="info"
+                            value={alignment}
+                            onChange={handleChange}
+                            id='group-buttons'
+                        >
+                            {
+                                condimentsAndSauces.map((i) => (
+                                    <ToggleButton value={i}>{i}</ToggleButton>
+                                ))
+                            }
+                        </ToggleButtonGroup>
+                    </AccordionDetails>
+                </Accordion>
+            </div>
+
         </div>
         <div className='clear-all-btn'>
             <Button startIcon={<Delete />} onClick={handleClear} variant='contained' color='error'>Clear</Button>
@@ -230,10 +294,11 @@ const IngredientsList = () => {
                 size='small'
                 sx={{width: "250px"}}
             >
-                <MenuItem value="Breakfast">Breakfast</MenuItem>
-                <MenuItem value="Lunch">Lunch</MenuItem>
-                <MenuItem value="Dinner">Dinner</MenuItem>
-                <MenuItem value="Snack">Snack</MenuItem>
+                {
+                    mealTypeList.map((i) => (
+                        <MenuItem value={i}>{i}</MenuItem>
+                    ))
+                }
             </TextField>
         </div>
         <div className='find-recipes-btn'>
